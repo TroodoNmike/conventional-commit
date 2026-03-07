@@ -8,7 +8,7 @@ allowed-tools:
   - Bash(git status:*)
   - Bash(git diff:*)
   - Bash(git log:*)
-argument-hint: "[type] [scope]"
+argument-hint: "[type] [scope] [--commit-and-push]"
 disable-model-invocation: true
 ---
 
@@ -34,6 +34,7 @@ The user invoked this command with: $ARGUMENTS
 - No arguments: Auto-detect type and scope
 - One argument: Force type (e.g., `feat`, `fix`, `chore`)
 - Two arguments: Force type and scope (e.g., `feat api`)
+- `--commit-and-push` flag (can appear anywhere in arguments): Skip user review, automatically commit and push. Can be combined with type/scope args (e.g., `feat --commit-and-push`, `fix api --commit-and-push`)
 
 ## Conventional Commits Format
 
@@ -178,7 +179,19 @@ Would you like me to:
 
 **Important:** Always count and display the total number of files staged. Use `git diff --cached --name-only | wc -l` to get the count.
 
-**Stop here and wait for user response.** Do not commit automatically.
+**If `--commit-and-push` flag is present:** Skip the presentation step above entirely. Instead, immediately commit and push without asking the user. After committing and pushing, display a summary:
+
+```
+Committed and pushed:
+<type>[scope]: <description>
+
+Files committed (X total):
+- [list of staged files]
+
+Pushed to: <branch>
+```
+
+**If `--commit-and-push` flag is NOT present:** Stop here and wait for user response. Do not commit automatically.
 
 ### Phase 2: User Review & Commit
 
