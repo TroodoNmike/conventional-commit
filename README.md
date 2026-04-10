@@ -18,24 +18,45 @@ A Claude Code skill that automatically generates [Conventional Commits](https://
 
 - [Claude Code CLI](https://github.com/anthropics/claude-code) installed and configured
 
-### Install the Skill
+### Install via Claude Code Marketplace (recommended)
 
-1. Clone this repository into your Claude Code skills directory:
+Add the marketplace and install the plugin from within Claude Code:
 
-```bash
-cd ~/.claude/skills
-git clone https://github.com/YOUR_USERNAME/conventional-commit.git
+```
+/plugin marketplace add TroodoNmike/conventional-commit
+/plugin install conventional-commit@conventional-commit
 ```
 
-2. Restart Claude Code or reload skills
 
-3. Verify installation:
+### Install manually
+
+1. Clone this repository:
 
 ```bash
-claude /skills
+git clone https://github.com/TroodoNmike/conventional-commit.git
 ```
 
-You should see `conventional-commit` in the list.
+2. Add it as a local marketplace in `~/.claude/settings.json`:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "conventional-commit": {
+      "source": {
+        "source": "directory",
+        "path": "/path/to/conventional-commit"
+      },
+      "autoUpdate": false
+    }
+  }
+}
+```
+
+3. Install the plugin:
+
+```
+/plugin install conventional-commit@conventional-commit
+```
 
 ## Usage
 

@@ -1,0 +1,21 @@
+{
+  "name": "conventional-commit",
+  "owner": {
+    "name": "TroodoNmike"
+  },
+  "metadata": {
+    "description": "Claude Code skill for generating Conventional Commits format messages with intelligent type and scope detection",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "conventional-commit",
+      "description": "Generate Conventional Commits format messages with smart type/scope detection, two-phase review, and selective file staging",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/conventional-commit"
+      ]
+    }
+  ]
+}
