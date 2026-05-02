@@ -157,6 +157,7 @@ Use `AskUserQuestion` with:
 - question: "Untracked files found. Which should be included in this commit?"
 - multiSelect: true
 - options: one option per file — label is the basename (or shortest unique path ≤5 words), description is the full relative path
+- All options start deselected by default (selecting none means skipping all untracked files)
 
 Stage only the files the user selects. If the user selects "Other", treat their text as a list of file paths to stage.
 
@@ -167,11 +168,11 @@ Use `AskUserQuestion` with:
 - question: "N untracked files found:\n- [list all files]\nWhich would you like to include?"
 - multiSelect: false
 - options:
+  - label: "None (Recommended)", description: "Skip all untracked files"
   - label: "All", description: "Stage all untracked files listed above"
-  - label: "None", description: "Skip all untracked files"
   - label: "Some", description: "I will specify which files to include"
 
-If user selects "All", stage all listed untracked files. If "None", skip them. If "Some" or "Other", treat the user's text response as file paths to stage.
+If user selects "None", skip all untracked files. If "All", stage all listed untracked files. If "Some" or "Other", treat the user's text response as file paths to stage.
 
 **General rules:**
 - **Use specific file paths** — never use `git add -A` or `git add .`
