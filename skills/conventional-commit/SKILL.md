@@ -157,9 +157,8 @@ Use `AskUserQuestion` with:
 - question: "Untracked files found. Which should be included in this commit?"
 - multiSelect: true
 - options: one option per file — label is the basename (or shortest unique path ≤5 words), description is the full relative path
-- All options start deselected by default (selecting none means skipping all untracked files)
 
-Stage only the files the user selects. If the user selects "Other", treat their text as a list of file paths to stage.
+Stage only the files the user selects. If the user selects nothing, skip all untracked files.
 
 **If more than 4 untracked files remain after filtering:**
 
@@ -237,9 +236,10 @@ After user reviews the message:
 - Display: "Pushed to: <branch>"
 
 **If user selects "Edit message":**
-- Ask the user for their modifications or the new message
-- Regenerate or adjust the message based on their input
-- Present new message for review using `AskUserQuestion` again (same format as step 7)
+- Ask the user for their modifications or a replacement message
+- If the user supplies a complete replacement message, use it **exactly as provided** — do not re-interpret or reformat
+- Otherwise, regenerate the message based on their input
+- Re-prompt using the same Action question above
 - Wait for approval again
 
 **If user selects "Other":**
