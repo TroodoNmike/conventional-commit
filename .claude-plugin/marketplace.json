@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude Code skill for generating Conventional Commits format messages with intelligent type and scope detection",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "plugins": [
     {
